@@ -5,9 +5,12 @@ from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.generic import ListView
+from .models import Rating
 
-@method_decorator(login_required, name='dispatch')
-
+class RatingsListView(ListView):
+    model = Rating
+    
 class SimpleFormView(View):
     form_class = SimpleForm
     initial = {'foo': 'pel`meni'}
